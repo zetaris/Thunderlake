@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+  zetaris-server:
+    image: zetaris/lightning-catalog-nvidia:latest
+    entrypoint: /home/zetaris/lightning/bin/start.sh
+    restart: always
+    ports:
+      - '8080:8080'
+      - '8081:8081'
