@@ -104,29 +104,30 @@ We will now:
 ---
 
 ### **1. Install Git, Docker, and Docker Compose**
-#### Update system packages
+```bash
+# Update system packages
 sudo apt update && sudo apt -y upgrade
 
-#### Install Git & dependencies
+# Install Git & dependencies
 sudo apt install -y git ca-certificates curl gnupg lsb-release
 
-#### Add Docker’s GPG key & repo
+# Add Docker’s GPG key & repo
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg |   sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg]   https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-#### Install Docker Engine and Compose plugin
+# Install Docker Engine and Compose plugin
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-#### (Optional) Run Docker without sudo
+# (Optional) Run Docker without sudo
 sudo usermod -aG docker $USER
 newgrp docker
 
-#### Verify installation
+# Verify installation
 docker --version
 docker compose version
-
+```
 ---
 
 ### **2. Clone the Repository**
@@ -136,36 +137,37 @@ cd Thunderlake
 ---
 
 ### **3. Pull the Docker Image**
-#### Using Compose v2
+```bash
+# Using Compose v2
 docker compose pull
 
-#### Legacy
+# Legacy
 docker-compose pull
 
-#### Specific image example:
+# Specific image example:
 docker pull zetaris/lightning-catalog-nvidia:latest
-
+```
 ---
 
 ### **4. Start the Application**
-
-#### Using Compose v2
+```bash
+# Using Compose v2
 docker compose up -d
 
-#### Legacy
+# Legacy
 docker-compose up -d
-
+```
 ---
 
 ### **5. Verify & Access**
-
-#### See running containers
+```bash
+# See running containers
 docker ps
 
-#### View logs
+# View logs
 docker compose logs -f
 docker-compose logs -f (legacy)
-
+```
 **Access the UI:**
 - Direct: \`http://<VM_PUBLIC_IP>:8081\`  
 - GCP SSH Tunnel:
