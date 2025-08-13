@@ -61,29 +61,34 @@ Once the VM is provisioned, install **Conda**, **RAPIDS**, **CUDA**, and the **N
 
 ### **A. Install Conda, RAPIDS, and CUDA**
 #### Download and install Miniconda
+```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
-
+```
 #### Add Conda to PATH
+```bash
 echo 'export PATH="$HOME/miniconda3/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
-
+```
 #### Create RAPIDS environment
+```bash
 conda create -n rapids-24.02 -c rapidsai -c nvidia -c conda-forge     rapids=24.02 python=3.10 cudatoolkit=11.8
 conda activate rapids-24.02
-
+```
 #### Verify Conda installation
+```bash
 conda --version
-
+```
 ### **B. Install NVIDIA Driver**
-
+```bash
 sudo apt update
 sudo apt install -y nvidia-driver-535
 sudo reboot
-
+```
 Verify GPU access:
+```bash
 nvidia-smi
-
+```
 **Validation:**  
 - \`conda --version\` → Conda installed and accessible  
 - \`nvidia-smi\` → GPU recognized and driver working  
